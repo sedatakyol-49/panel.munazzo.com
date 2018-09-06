@@ -1,0 +1,632 @@
+<app-header></app-header>
+
+<main>
+    <div class="row no-margin">
+        <div class="page page-header-search search-container parallax-container " style="box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 19px -1px inset; display: none;">
+            <div id="intro" class="container" style="display: none;">
+                <span class="white-text search-title">2+ miljoen merkproducten om te dropshippen.</span>
+                <br>
+                <span class="white-text search-subitle">Zoek producten op naam, barcode, merk, categorie of sku.</span>
+            </div>
+
+            <div class="parallax"><img src="/assets/img/parallax-section.jpg" style="transform: translate3d(-50%, -296px, 0px); display: block;"></div>
+        </div>
+        <div id="filters" class="col s12 m3 l2" style="">
+            <div class="toc-wrapper hide-on-small-and-down">
+                <div class="filter-container">
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li class="active">
+                            <div class="collapsible-header active"><i class="material-icons">clear_all</i>Weergave en Sortering</div>
+                            <div class="collapsible-body" style="padding: 1rem; display: block;">
+                                <div class="row">
+                                    <span>Weergeven als</span><br><br>
+                                    <div class="switch">
+                                        <label>
+                                            <div class="col s2 left-align">
+                                                <i class="material-icons">toc</i>
+                                            </div>
+                                            <div class="col s8 center-align" style="padding-top: 0.2rem;">
+                                                <input id="chkViewMode" type="checkbox">
+                                                <span class="lever"></span>
+                                            </div>
+                                            <div class="col s2 right-align">
+                                                <i class="material-icons">web</i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <span>Sorteren op</span><br><br>
+                                    <ul>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-0" value="0" checked="checked">
+                                            <label class="sort-group" sort="0" for="sort-0">Relevantie</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-1" value="1">
+                                            <label class="sort-group" sort="1" for="sort-1">Prijs oplopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-2" value="2">
+                                            <label class="sort-group" sort="2" for="sort-2">Prijs aflopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-3" value="3">
+                                            <label class="sort-group" sort="3" for="sort-3">Alfabetisch oplopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-4" value="4">
+                                            <label class="sort-group" sort="4" for="sort-4">Alfabetisch Aflopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-5" value="5">
+                                            <label class="sort-group" sort="5" for="sort-5">Kortste Levertijd</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <span>Filteren op</span><br><br>
+                                    <ul>
+                                        <li>
+                                            <input name="priority-group" type="radio" id="priority-0" value="0" checked="checked">
+                                            <label class="priority-group" priority="0" for="priority-0">Alle producten</label>
+                                        </li>
+                                        <li>
+                                            <input name="priority-group" type="radio" id="priority-1" value="1">
+                                            <label class="priority-group" priority="1" for="priority-1">Priority producten</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li class="active">
+                            <div class="collapsible-header active"><i class="material-icons">comment</i>Categorie</div>
+                            <div class="collapsible-body" style="display: block;">
+                                <ul id="categorynav" class="table-of-contents">
+                                    <li><a href="#" onclick="filterCategory(0); return false">All categories (1608)</a></li>
+                                    <li><a id="category_85" href="#" onclick="filterCategory(85); return false">headsets (1)</a></li>
+                                    <li><a id="category_96" href="#" onclick="filterCategory(96); return false">tabletbehuizingen
+                                            (1)</a></li>
+                                    <li><a id="category_150" href="#" onclick="filterCategory(150); return false">garantie- en
+                                            supportuitbreidingen (1)</a></li>
+                                    <li><a id="category_204" href="#" onclick="filterCategory(204); return false">cameratassen
+                                            en rugzakken (3)</a></li>
+                                    <li><a id="category_297" href="#" onclick="filterCategory(297); return false">haarverzorging
+                                            (2)</a></li>
+                                    <li><a id="category_302" href="#" onclick="filterCategory(302); return false">niet gecategoriseerd
+                                            (1487)</a></li>
+                                    <li><a id="category_457" href="#" onclick="filterCategory(457); return false">educatief speelgoed
+                                            (1)</a></li>
+                                    <li><a id="category_488" href="#" onclick="filterCategory(488); return false">puzzels (1)</a></li>
+                                    <li><a id="category_512" href="#" onclick="filterCategory(512); return false">horloges (9)</a></li>
+                                    <li><a id="category_558" href="#" onclick="filterCategory(558); return false">bouwsets (1)</a></li>
+                                    <li><a id="category_675" href="#" onclick="filterCategory(675); return false">Radio-Controlled
+                                            (RC) model parts (1)</a></li>
+                                    <li><a id="category_823" href="#" onclick="filterCategory(823); return false">diepvriezers
+                                            (1)</a></li>
+                                    <li><a id="category_948" href="#" onclick="filterCategory(948); return false">tijdschrift-/boekomslagen
+                                            (1)</a></li>
+                                    <li><a id="category_967" href="#" onclick="filterCategory(967); return false">eau de parfum
+                                            (2)</a></li>
+                                    <li><a id="category_1135" href="#" onclick="filterCategory(1135); return false">Blu-Ray/DVD-films
+                                            (71)</a></li>
+                                    <li><a id="category_1762" href="#" onclick="filterCategory(1762); return false">computers
+                                            &amp; elektronica (1)</a></li>
+                                    <li><a id="category_2025" href="#" onclick="filterCategory(2025); return false">haarverzorging
+                                            (1)</a></li>
+                                    <li><a id="category_2522" href="#" onclick="filterCategory(2522); return false">parfumerie
+                                            (17)</a></li>
+                                    <li><a id="category_2798" href="#" onclick="filterCategory(2798); return false">vochtinbrengende
+                                            crémes gezicht (1)</a></li>
+                                    <li><a id="category_2851" href="#" onclick="filterCategory(2851); return false">lichaams-/huidverzorging
+                                            (5)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li class="active">
+                            <div class="collapsible-header active"><i class="material-icons">grade</i>Merk</div>
+                            <div class="collapsible-body" style="display: block;">
+                                <ul id="brandnav" class="table-of-contents">
+                                    <li><a href="#" onclick="filterBrand(0); return false">All brands (19)</a></li>
+                                    <li><a id="brand_585" href="#" onclick="filterBrand(585); return false">Kerastase (1)</a></li>
+                                    <li><a id="brand_2153" href="#" onclick="filterBrand(2153); return false">Armaf (5)</a></li>
+                                    <li><a id="brand_2806" href="#" onclick="filterBrand(2806); return false">Loreal (1)</a></li>
+                                    <li><a id="brand_3220" href="#" onclick="filterBrand(3220); return false">Derek Lam 10 Crosby
+                                            (7)</a></li>
+                                    <li><a id="brand_3265" href="#" onclick="filterBrand(3265); return false">Derek Lam (5)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="search-box-parent" class="col m9 l10">
+            <div id="search-card" class="card col s12" style="height: 4rem; color: rgba(0,0,0,0.6); font-size: 1.2rem; padding-right: 2rem; padding-left: 2rem;">
+                <i class="material-icons" style="position: absolute; left: 1rem; top: 1rem; font-size: 2rem;">search</i>
+                <input id="searchbox" type="text" style="border: none; margin-top: 0.6rem; margin-left: 2rem;" placeholder="Zoek producten op naam, barcode, merk, categorie of sku"
+                    data-activates="search-dropdown" required="">
+                <ul id="search-dropdown" class="dropdown-content col s6 m8 l8"></ul>
+            </div>
+            <div id="results" style="clear: both;">
+                <div class="row red hide-on-med-and-down" style="padding: 1rem; color: #fff; margin-bottom: 0;">
+                    <div class="col l10">Product</div>
+                    <div class="col l2"></div>
+                </div>
+                <ul id="resultlist" class="collapsible popout" data-collapsible="accordion" style="margin-top: 0;">
+                    <li class="product-item" product="2058955" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">HERMA Sticker Sammelalbum für Kids Der kleine Delfin A5</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem; display: none;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1956084" offer="0" stock="0" brand="null" category="967">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Looking Glass By Derek Lam Eau De Parfum Spray 175 ml - Fragrances For
+                                    Women</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem; display: none;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vaW52ZW50b3J5c291cmNlLnBhbmVsLnhsLXN1cHBseS5jb20vaW1hZ2UvY2F0YWxvZy9GTjMwNDc4OS5qcGcifQ=="
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="2092978" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Starmix Haartrockner Der Robuste STH 2400 Z</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem; display: none;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="49793" offer="0" stock="0" brand="null" category="823">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Beko HSA 24530 Ayr? duran Sand?k 230l A++ Beyaz derin dondurucu</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem; display: none;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vaW5pc2hvcC5jb20vaW1nL25vcm0vaGlnaC8xNTc0M18xMDY2NzY1NS0xNzAzLmpwZyJ9"
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1909178" offer="0" stock="0" brand="3265" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Silent St By Derek Lam Eau De Parfum Spray 175 ml - Fragrances For Women</div>
+                                <div
+                                    class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem; display: none;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1984278" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">ZEP Derry 7 fotos kunststof galerielijst HA07K</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="849142" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">ESYLUX ESYLUX MD-Ecksockel sw f. BWM der MD Ser. EM100 25 532</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="612907" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Der Club der roten B?nder - Staffel 1 (Blu-ray)</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1938010" offer="0" stock="0" brand="3220" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Blackout By Derek Lam Eau De Parfum Spray 175 ml - Fragrances For Women</div>
+                                <div
+                                    class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="814359" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">CommScope/AMP Netconn Aufsetzrahmen zur Erhöhung der Bautiefe um</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1938011" offer="0" stock="0" brand="3220" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Rainy Day By Derek Lam 10 Crosby Eau De Parfum Spray 175 ml - Fragrances
+                                    For Women</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="810368" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">ESYLUX ESYLUX RC-Ecksockel br f. BWM der RCi Ser. EM100 16 127</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1859338" offer="0" stock="0" brand="3265" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Ellipsis By Derek Lam Eau De Parfum Spray 50 ml - Fragrances For Women</div>
+                                <div
+                                    class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vaW52ZW50b3J5c291cmNlLnBhbmVsLnhsLXN1cHBseS5jb20vaW1hZ2UvY2F0YWxvZy9GTjI5OTE5MS5qcGcifQ=="
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1619416" offer="0" stock="0" brand="null" category="302">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">221-500 Befestigungsadapter für, Klemmen der Seri</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vcmVzZWxsZXIuaW5kdXN0cnktZWxlY3Ryb25pY3MuZGUvYXJ0aWtlbF82MjYyNTYuaHRtIn0="
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1859339" offer="0" stock="0" brand="3265" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Something Wild By Derek Lam Eau De Parfum Spray 50 ml - Fragrances For
+                                    Women</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="615564" offer="0" stock="0" brand="null" category="85">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Sandberg Derecho Headset</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vaW1hZ2VzLmljZWNhdC5iaXovaW1nL2dhbGxlcnkvMjk2NDQ3NTFfMzkzNy5qcGcifQ=="
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1859340" offer="0" stock="0" brand="3265" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Afloat By Derek Lam Eau De Parfum Spray 50 ml - Fragrances For Women</div>
+                                <div
+                                    class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1859341" offer="0" stock="0" brand="3265" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Derek Lam 10 Crosby Looking Glass By Derek Lam Eau De Parfum Spray 50 ml - Fragrances For
+                                    Women</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vaW52ZW50b3J5c291cmNlLnBhbmVsLnhsLXN1cHBseS5jb20vaW1hZ2UvY2F0YWxvZy9GTjI5OTE5NC5qcGcifQ=="
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1804607" offer="0" stock="0" brand="2153" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Armaf Derby Club House Blanche By Armaf Edt Spray 100 ml - Fragrances For Men</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiIifQ==" style="max-width: 90%; max-height: 200px;"></div>
+                                <div
+                                    class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="product-item" product="1804608" offer="0" stock="0" brand="2153" category="2522">
+                        <div class="collapsible-header">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col l10 m10 s10">Armaf Der Club House Gold 100 ml - Eau De Toilette Spray Men</div>
+                                <div class="col l2 m2 s2"><i class="material-icons right">more_horizontal</i></div>
+                            </div>
+                        </div>
+                        <div class="collapsible-body" style="position: relative; padding-bottom: 4rem;">
+                            <div class="row">
+                                <div class="row center-align"><img src="https://munazzo.com/api/image?size=256&amp;base64=eyJ1cmwiOiJodHRwOi8vaW1nLmZyYWdyYW5jZXguY29tL2ltYWdlcy9wcm9kdWN0cy9za3UvbGFyZ2UvYW1kZXIzNG0uanBnIn0="
+                                        style="max-width: 90%; max-height: 200px;"></div>
+                                <div class="row center-align"><a href="/app/login">Meld u aan</a> voor product informatie en actuele prijzen.</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="info-beta" class="row no-margin" style="display: none;">
+        <section id="benefits">
+            <div class="container">
+                <h4 class="center-align with-subtitle">Limiteer uzelf niet met alleen uw eigen aanbod</h4>
+                <h5 class="subtitle center-align">Publiceer snel meerdere producten op wereldwijde marktplaatsen.</h5>
+                <div class="row three-paragraphs center-align">
+                    <div class="col m4 s12">
+                        <div class="row">
+                            <div class="col s4 offset-s4 m6 offset-m3">
+                                <img src="/assets/img/benefits-fastest-time.svg" alt="Snelle updates">
+                            </div>
+                        </div>
+                        <h5>Snelle updates</h5>
+                        <p>
+                            12x per dag worden alle producten voorzien van actuele status updates en voorraad bijwerkingen.
+                        </p>
+                    </div>
+                    <div class="col m4 s12">
+                        <div class="row">
+                            <div class="col s4 offset-s4 m6 offset-m3">
+                                <img src="/assets/img/benefits-distributed-everything.svg" alt="Meerzijdige integraties">
+                            </div>
+                        </div>
+                        <h5>Meerzijdige integraties</h5>
+                        <p>
+                            Maak uzelf flexibel met meerdere integraties om uw aanwezigheid op meerdere marktplaatsen te vergroten zonder de controle
+                            te verliezen.
+                        </p>
+                    </div>
+                    <div class="col m4 s12">
+                        <div class="row">
+                            <div class="col s4 offset-s4 m6 offset-m3">
+                                <img src="/assets/img/benefts-working-in-silos.svg" alt="Complete catalogussen">
+                            </div>
+                        </div>
+                        <h5>Complete catalogussen</h5>
+                        <p>
+                            Elimineer de afhankelijkheid van product specialisten en content leveranciers. Meertalige content in een paar klikken te
+                            gebruiken.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row center-align grey-row no-margin">
+            <div class="container">
+                <h4 class="center-align with-subtitle">Wat is munazzo?</h4>
+                <p>Munazzo geeft keuze uit meer dan 2 miljoen merkartikelen voor uw winkel of webshop om te dropshippen naar
+                    uw klant voor de beste prijs. Importeer met onze pakketten duizenden producten met content in uw webshop
+                    of wereldwijde marketplaces. Uw bestellingen zijn gedekt door ons aanbod.</p>
+            </div>
+        </div>
+        <section id="infrastructure" class="page page-header-blue grey-text">
+            <div class="container">
+                <h4 class="center-align">Meer dan een zoekmachine</h4>
+                <div class="row center-align">
+                    <div class="col s12 m2 offset-m1 exagon">
+                        <img src="/assets/img/exagon_integrations.png" alt="Koppelingen">
+                        <p>Wereldwijde koppelingen</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_nodejs.png" alt="Geen technische kennis benodigd">
+                        <p>Geen technische kennis benodigd</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_db.png" alt="Productinformatie &amp; voorraad informatie">
+                        <p>Product content &amp; actuele voorraad</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_user.png" alt="Integratie beheer">
+                        <p>Integratie beheer</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_frontend.png" alt="Responsive beheerpagina's">
+                        <p>Responsive beheerpagina's</p>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <div class="col s12 l4 m4 offset-l4 offset-m4">
+                        <a href="/register" class="btn waves-effect waves-light white grey-text">
+                            <span class="red-text">Nu aanmelden!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section grey-row center-align">
+            <div class="container">
+                <h5 class="start text-primarycolor">Integratie partners</h5>
+                <div class="row">
+                    <div class="col s6 m1 l1 offset-l4 offset-m4">
+                        <div class="valign-wrapper">
+                            <a href="/app/store/mijnwebwinkel" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/mijnwebwinkel.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m1 l1">
+                        <div class="valign-wrapper">
+                            <a href="/app/store/ccv" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/ccv.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m1 l1">
+                        <div class="valign-wrapper">
+                            <a href="/app/store/lightspeed" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/lightspeed.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m1 l1">
+                        <div class="valign-wrapper">
+                            <a href="/app/store/marktplaats" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/marktplaats.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-nav" class="red-text">
+            <div class="container row">
+                <div class="col s12 m3 hide-on-small-only">
+                    <p>MUNAZZO.COM</p>
+                    <ul>
+                        <li><a href="/app/policy">Privacy Policy</a></li>
+                        <li><a href="/app/terms">Algemene voorwaarden</a></li>
+                        <li><a href="/app/dropshipping">Dropshipping voorwaarden</a></li>
+                    </ul>
+                    <a href="https://www.thuiswinkel.org/businesspartners/munazzo/verklaring" rel="nofollow" target="_blank"><img
+                            style="width: 50%;" src="/assets/img/Thuiswinkel_Business_Partner_Kleur_Horizontaal.png"
+                            alt="Thuiswinkel Businness Partner"></a>
+                </div>
+                <div class="col s12 m3 hide-on-small-only">
+                    <p>ASSORTIMENT</p>
+                    <ul>
+                        <li><a href="/app">Zoeken</a></li>
+                        <li><a href="/app/catalog">Categorieën</a></li>
+                        <li><a href="/app/platform">Paketten</a></li>
+                        <li><a href="/app/store">Apps</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 m3">
+                    <p>CONTACT</p>
+                    <ul>
+                        <li><a href="/app/features" target="_blank">Over ons</a></li>
+                        <li><a href="#modal-contact-email" data-target="modal-contact-email" class="modal-trigger">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 m3">
+                    <p>
+                        <a href="https://www.facebook.com/Munazzo-720566761427544/" target="_blank" style="margin-right:5px;"><i
+                                class="fa fa-facebook fa-lg"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

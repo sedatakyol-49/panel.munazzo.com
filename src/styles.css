@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/bootstrap.css";
+@import "assets/css/munazzo.css";
+@import "assets/css/font-awesome.min.css";
+@import "assets/css/datepicker3.css";
+/* @import "assets/css/styles.css"; */
+
+
+
+.datepicker table{
+  width: 100% !important;
+}
+
+table tr td, table th{
+  font-size:1.2rem !important;
+}
+
+.sidebar ul.nav ul.children li a.active {
+  color: #ececec !important;
+}
+
+.todo-list-item{
+  list-style: none;
+}
+.text-white{
+  color:white !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

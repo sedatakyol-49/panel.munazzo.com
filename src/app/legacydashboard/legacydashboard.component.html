@@ -1,0 +1,273 @@
+<app-header></app-header>
+<main>
+    <div class="row no-margin">
+        <div class="page page-header-search search-container parallax-container " style="-webkit-box-shadow: inset 0px 0px 19px -1px rgba(0,0,0,0.75); -moz-box-shadow: inset 0px 0px 19px -1px rgba(0,0,0,0.75); box-shadow: inset 0px 0px 19px -1px rgba(0,0,0,0.75);">
+            <div id="intro" class="container">
+                <span class="white-text search-title">2+ miljoen merkproducten om te dropshippen.</span>
+                <br>
+                <span class="white-text search-subitle">Zoek producten op naam, barcode, merk, categorie of sku.</span>
+            </div>
+            <div id="search-card" class="card col m6 s10 offset-s1 offset-m3 z-depth-4 rounded-card" style="border-radius: 2rem;height: 4rem; color: rgba(0,0,0,0.6); font-size: 1.2rem; padding-right: 2rem; padding-left: 2rem;">
+                <i class="material-icons" style="position: absolute; left: 1rem; top: 1rem; font-size: 2rem;">search</i>
+                <input id="searchbox" type="text" style="border: none; margin-top: 0.6rem; margin-left: 2rem;" placeholder="Zoek producten op naam, barcode, merk, categorie of sku"
+                    data-activates="search-dropdown" required="">
+                <ul id="search-dropdown" class="dropdown-content col s6 m8 l8"></ul>
+            </div>
+            <div class="parallax"><img src="../../assets/admin_dashboard_assets/images/parallax-section.jpg" style="transform: translate3d(-50%, 523px, 0px); display: block;"></div>
+        </div>
+        <div id="filters" class="col s12 m3 l2" style="display: none;">
+            <div class="toc-wrapper hide-on-small-and-down">
+                <div class="filter-container">
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li class="active">
+                            <div class="collapsible-header active"><i class="material-icons">clear_all</i>Weergave en Sortering</div>
+                            <div class="collapsible-body" style="padding: 1rem; display: block;">
+                                <div class="row">
+                                    <span>Weergeven als</span><br><br>
+                                    <div class="switch">
+                                        <label>
+                                            <div class="col s2 left-align">
+                                                <i class="material-icons">toc</i>
+                                            </div>
+                                            <div class="col s8 center-align" style="padding-top: 0.2rem;">
+                                                <input id="chkViewMode" type="checkbox">
+                                                <span class="lever"></span>
+                                            </div>
+                                            <div class="col s2 right-align">
+                                                <i class="material-icons">web</i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <span>Sorteren op</span><br><br>
+                                    <ul>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-0" value="0" checked="checked">
+                                            <label class="sort-group" sort="0" for="sort-0">Relevantie</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-1" value="1">
+                                            <label class="sort-group" sort="1" for="sort-1">Prijs oplopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-2" value="2">
+                                            <label class="sort-group" sort="2" for="sort-2">Prijs aflopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-3" value="3">
+                                            <label class="sort-group" sort="3" for="sort-3">Alfabetisch oplopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-4" value="4">
+                                            <label class="sort-group" sort="4" for="sort-4">Alfabetisch Aflopend</label>
+                                        </li>
+                                        <li>
+                                            <input name="sort-group" type="radio" id="sort-5" value="5">
+                                            <label class="sort-group" sort="5" for="sort-5">Kortste Levertijd</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <span>Filteren op</span><br><br>
+                                    <ul>
+                                        <li>
+                                            <input name="priority-group" type="radio" id="priority-0" value="0" checked="checked">
+                                            <label class="priority-group" priority="0" for="priority-0">Alle producten</label>
+                                        </li>
+                                        <li>
+                                            <input name="priority-group" type="radio" id="priority-1" value="1">
+                                            <label class="priority-group" priority="1" for="priority-1">Priority producten</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li class="active">
+                            <div class="collapsible-header active"><i class="material-icons">comment</i>Categorie</div>
+                            <div class="collapsible-body" style="display: block;">
+                                <ul id="categorynav" class="table-of-contents">
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li class="active">
+                            <div class="collapsible-header active"><i class="material-icons">grade</i>Merk</div>
+                            <div class="collapsible-body" style="display: block;">
+                                <ul id="brandnav" class="table-of-contents">
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="search-box-parent" class="col m9 l10">
+            <div id="results" style="clear: both;">
+            </div>
+        </div>
+    </div>
+    <div id="info-beta" class="row no-margin">
+        <section id="benefits">
+            <div class="container">
+                <h4 class="center-align with-subtitle">Limiteer uzelf niet met alleen uw eigen aanbod</h4>
+                <h5 class="subtitle center-align">Publiceer snel meerdere producten op wereldwijde marktplaatsen.</h5>
+                <div class="row three-paragraphs center-align">
+                    <div class="col m4 s12">
+                        <div class="row">
+                            <div class="col s4 offset-s4 m6 offset-m3">
+                                <img src="/assets/img/benefits-fastest-time.svg" alt="Snelle updates">
+                            </div>
+                        </div>
+                        <h5>Snelle updates</h5>
+                        <p>
+                            12x per dag worden alle producten voorzien van actuele status updates en voorraad bijwerkingen.
+                        </p>
+                    </div>
+                    <div class="col m4 s12">
+                        <div class="row">
+                            <div class="col s4 offset-s4 m6 offset-m3">
+                                <img src="/assets/img/benefits-distributed-everything.svg" alt="Meerzijdige integraties">
+                            </div>
+                        </div>
+                        <h5>Meerzijdige integraties</h5>
+                        <p>
+                            Maak uzelf flexibel met meerdere integraties om uw aanwezigheid op meerdere marktplaatsen te vergroten zonder de controle
+                            te verliezen.
+                        </p>
+                    </div>
+                    <div class="col m4 s12">
+                        <div class="row">
+                            <div class="col s4 offset-s4 m6 offset-m3">
+                                <img src="/assets/img/benefts-working-in-silos.svg" alt="Complete catalogussen">
+                            </div>
+                        </div>
+                        <h5>Complete catalogussen</h5>
+                        <p>
+                            Elimineer de afhankelijkheid van product specialisten en content leveranciers. Meertalige content in een paar klikken te
+                            gebruiken.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row center-align grey-row no-margin">
+            <div class="container">
+                <h4 class="center-align with-subtitle">Wat is munazzo?</h4>
+                <p>Munazzo geeft keuze uit meer dan 2 miljoen merkartikelen voor uw winkel of webshop om te dropshippen naar
+                    uw klant voor de beste prijs. Importeer met onze pakketten duizenden producten met content in uw webshop
+                    of wereldwijde marketplaces. Uw bestellingen zijn gedekt door ons aanbod.</p>
+            </div>
+        </div>
+        <section id="infrastructure" class="page page-header-blue grey-text">
+            <div class="container">
+                <h4 class="center-align">Meer dan een zoekmachine</h4>
+                <div class="row center-align">
+                    <div class="col s12 m2 offset-m1 exagon">
+                        <img src="/assets/img/exagon_integrations.png" alt="Koppelingen">
+                        <p>Wereldwijde koppelingen</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_nodejs.png" alt="Geen technische kennis benodigd">
+                        <p>Geen technische kennis benodigd</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_db.png" alt="Productinformatie &amp; voorraad informatie">
+                        <p>Product content &amp; actuele voorraad</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_user.png" alt="Integratie beheer">
+                        <p>Integratie beheer</p>
+                    </div>
+                    <div class="col s12 m2 exagon">
+                        <img src="/assets/img/exagon_frontend.png" alt="Responsive beheerpagina's">
+                        <p>Responsive beheerpagina's</p>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <div class="col s12 l4 m4 offset-l4 offset-m4">
+                        <a href="/register" class="btn waves-effect waves-light white grey-text">
+                            <span class="red-text">Nu aanmelden!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section grey-row center-align">
+            <div class="container">
+                <h5 class="start text-primarycolor">Integratie partners</h5>
+                <div class="row">
+                    <div class="col s6 m1 l1 offset-l4 offset-m4">
+                        <div class="valign-wrapper">
+                            <a [routerLink]="['/mywebstore']" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/mijnwebwinkel.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m1 l1">
+                        <div class="valign-wrapper">
+                            <a [routerLink]="['/ccv']" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/ccv.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m1 l1">
+                        <div class="valign-wrapper">
+                            <a routerLink="/lightspeed" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/lightspeed.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s6 m1 l1">
+                        <div class="valign-wrapper">
+                            <a [routerLink]="['/marketplace']" target="_blank" class="waves-effect waves-block waves-light valign center" style="width:100%;">
+                                <img src="/assets/img/apps/marktplaats.png" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-nav" class="red-text">
+            <div class="container row">
+                <div class="col s12 m3 hide-on-small-only">
+                    <p>MUNAZZO.COM</p>
+                    <ul>
+                        <li><a routerLink="/policy">Privacy Policy</a></li>
+                        <li><a [routerLink]="['/generall-conditions']">Algemene voorwaarden</a></li>
+                        <li><a [routerLink]="['/dropshipping-conditions']">Dropshipping voorwaarden</a></li>
+                    </ul>
+                    <a href="https://www.thuiswinkel.org/businesspartners/munazzo/verklaring" rel="nofollow" target="_blank"><img
+                            style="width: 50%;" src="/assets/img/Thuiswinkel_Business_Partner_Kleur_Horizontaal.png"
+                            alt="Thuiswinkel Businness Partner"></a>
+                </div>
+                <div class="col s12 m3 hide-on-small-only">
+                    <p>ASSORTIMENT</p>
+                    <ul>
+                        <li><a [routerLink]="['/search']" href="/app">Zoeken</a></li>
+                        <li><a [routerLink]="['/categorien']">Categorieën</a></li>
+                        <li><a [routerLink]="['/paketten']">Paketten</a></li>
+                        <li><a [routerLink]="['/apps']">Apps</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 m3">
+                    <p>CONTACT</p>
+                    <ul>
+                        <li><a [routerLink]="['/over-ons']" target="_blank">Over ons</a></li>
+                        <li><a href="#modal-contact-email" data-target="modal-contact-email" class="modal-trigger">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 m3">
+                    <p>
+                        <a href="https://www.facebook.com/Munazzo-720566761427544/" target="_blank" style="margin-right:5px;"><i
+                                class="fa fa-facebook fa-lg"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

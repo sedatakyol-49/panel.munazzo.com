@@ -1,0 +1,38 @@
+<div class="row" style="margin-top:7%">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+    <div class="login-panel panel panel-default">
+      <img src="/assets/fonts/Munazzo.png" style="width:100%;height:20%;padding:5%" />
+      <div class="panel-heading">
+        <div class="panel-title text-center">
+          <i class="fa fa-fw fa-user"></i>
+          Log in Munazzo
+        </div>
+      </div>
+      <div class="panel-body">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" id="form">
+          <fieldset>
+            <div class="form-group">
+              <input ngModel name="username" class="form-control" placeholder="user name" type="text" autofocus="">
+            </div>
+            <div class="form-group">
+              <input name="password" ngModel class="form-control" placeholder="password" type="password">
+            </div>
+            <div class="form-group" *ngIf="isPassCorrect" col-sm-8>
+              {{isPassErrorMes}}
+                <!-- <alert [color]="warningCOlor" [text]="warningText"></alert> -->
+              </div>
+            <div class="form-control col-sm-8">
+              <button type="submit" class="btn btn-primary pull-right">
+                <i class="glyphicon glyphicon-log-in"></i>
+                Login
+              </button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+            </div>
+      
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div><!-- /.col-->
+</div><!-- /.row -->

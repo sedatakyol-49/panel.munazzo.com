@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="col-md-12">
+    <h3 style="text-align:center">Platformsettings</h3>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">ID</th>
+          <th class="text-center">Key</th>
+          <th class="text-center">Value</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let platformset of platformSettings">
+          <td>{{platformset.ID}}</td>
+          <td>{{platformset.Key}}</td>
+          <td>{{platformset.Value}}</td>
+          <td>
+            <button class="btn btn-info" (click)="showEditPlatformSettingsForm(platformset)">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="removePlatformsettings(platformset)">
+              <i class="fa fa-minus"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-success" (click)="showAddPlatformsettingsForm()">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+  <!-- ////// -->
+
+  <!-- ////// -->
+
+  <div *ngIf="platfromsettingsformForm" class="col-md-12">
+    <h3 style="text-align:center">Add(Platformsettings)</h3>
+    <div class="card">
+      <div class="card-body">
+        <form #platfromsettings="ngForm" (ngSubmit)="platfromsettings.form.valid && onSubmit(platfromsettings)" id="form" novalidate>
+          <div class="form-group">
+            <label class="col-md-4">Platform Description</label>
+            <select ngModel class="form-control" name="AccountPlatformID" #AccountPlatformID="ngModel" [(ngModel)]="newplatfromsettingsform.AccountPlatformID"
+              required>
+              <option [ngValue]="accplatform.ID" *ngFor="let accplatform of accountplatforms">{{accplatform.Key}}</option>
+            </select>
+            <div *ngIf="platfromsettings.submitted && AccountPlatformID.invalid" class="invalid-feedback">
+              <div *ngIf="AccountPlatformID.errors.required" class="alert alert-danger">AccountPlatformID is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Key</label>
+            <select ngModel class="form-control" name="Key" #Key="ngModel" [(ngModel)]="newplatfromsettingsform.Key"
+              required>
+              <option *ngFor="let platformKey of platformSettingsDefaultKey">{{platformKey.Key}}</option>
+            </select>
+            <div *ngIf="platfromsettings.submitted && Key.invalid" class="invalid-feedback">
+                <div *ngIf="Key.errors.required" class="alert alert-danger">Key is required</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Value</label>
+            <input ngModel type="text" class="form-control" [(ngModel)]="newplatfromsettingsform.Type" name="Value" #Value="ngModel"
+            required minlength="3"/>
+            <div *ngIf="platfromsettings.submitted && Value.invalid" class="invalid-feedback">
+              <div *ngIf="Value.errors.required" class="alert alert-danger">Value is required</div>
+              <div *ngIf="Value.errors.minlength" class="alert alert-danger">Value must be at least 5 characters</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-warning" (click)="cancelNewAccountPlatform()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /////////////// -->
+  <!-- Edit AccountPlatform -->
+  <div *ngIf="editplatfromsettingsformForm" class="col-md-12">
+    <h3 style="text-align:center">Edit(Platformsettings)</h3>
+    <div class="card">
+      <div class="card-body">
+        <form #editedplatfromsettings="ngForm" (ngSubmit)="onSubmitUpdate(editedplatfromsettings)" id="form">
+          <div [style.visibility]="'hidden'">
+            <label class="col-md-4">ID</label>
+            <input type="text" class="form-control" [(ngModel)]="editedplatfromsettings.ID" name="ID" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Platform Description</label>
+            <select ngModel class="form-control" name="AccountPlatformID" [(ngModel)]="editedplatfromsettings.AccountPlatformID">
+              <option [ngValue]="accplatform.ID" *ngFor="let accplatform of accountplatforms">{{accplatform.Key}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Key</label>
+            <input ngModel type="text" class="form-control" [(ngModel)]="editedplatfromsettings.Key" name="Key" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Value</label>
+            <input ngModel type="text" class="form-control" [(ngModel)]="editedplatfromsettings.Value" name="Value" />
+          </div>
+          <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- ////// -->
+</div>

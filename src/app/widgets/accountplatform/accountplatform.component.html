@@ -1,0 +1,451 @@
+<!-- List of AccountPlatform-->
+<div class="col-md-12">
+  <h3 style="text-align: center">Account Platforms</h3>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Type</th>
+        <th class="text-center">Key</th>
+        <th class="text-center">IsActive</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let accountplatform of accountplatforms">
+        <td>{{accountplatform.ID}}</td>
+        <td>{{accountplatform.Type}}</td>
+        <td>{{accountplatform.Key}}</td>
+        <td>{{accountplatform.IsActive}}</td>
+        <td>
+          <button mat-flat-button color="accent" (click)="showEditAccountPlatformForm(accountplatform)">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+        <td>
+          <button mat-flat-button color color="warn" (click)="removeAccountPlatform(accountplatform)">
+            <i class="fa fa-minus"></i>
+          </button>
+        </td>
+        <td>
+          <button mat-flat-button color="primary" (click)="goPlatformSettings(accountplatform)">Go to Platformsettings
+            <i class="fa fa-angle-double-right"></i>
+          </button>
+        </td>
+        <td>
+          <button mat-flat-button color="primary" (click)="goIntegrationFilters(accountplatform)">Go to IntegrationFilters
+            <i class="fa fa-angle-double-right"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="showAddAccountPlatformForm()">
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+<!-- Create AccountPlatform -->
+<div *ngIf="accounPlatformForm" class="col-md-12">
+  <h3 style="text-align:center">Add(Accountplatform)</h3>
+  <div class="card">
+    <div class="card-body">
+      <form #accountPlatForm="ngForm" (ngSubmit)="accountPlatForm.form.valid && onSubmit(accountPlatForm)" id="form" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Platform Description</label>
+          <select id="platformID" ngModel class="form-control" name="PlatformID" [(ngModel)]="newAccountPlatform.PlatformID" required
+            #PlatformID="ngModel">
+            <option [ngValue]="platform.ID" *ngFor="let platform of platforms">{{platform.Description}}</option>
+          </select>
+          <div *ngIf="accountPlatForm.submitted && PlatformID.invalid" class="invalid-feedback">
+            <div *ngIf="PlatformID.errors.required" class="alert alert-danger">PlatformID is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Plugin Title</label>
+          <select ngModel class="form-control" name="PluginID" [(ngModel)]="newAccountPlatform.PluginID" required #PluginID="ngModel">
+            <option [ngValue]="plugin.ID" *ngFor="let plugin of plugins">{{plugin.Title}}</option>
+          </select>
+          <div *ngIf="accountPlatForm.submitted && PluginID.invalid" class="invalid-feedback">
+            <div *ngIf="PluginID.errors.required" class="alert alert-danger">PluginID is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Type</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="newAccountPlatform.Type" required minlength="5" maxlength="100"
+            name="Type" #Type="ngModel" />
+          <div *ngIf="accountPlatForm.submitted && Type.invalid" class="invalid-feedback">
+            <div *ngIf="Type.errors.required" class="alert alert-danger">Type is required</div>
+            <div *ngIf="Type.errors.minlength" class="alert alert-danger">Type must be at least 5 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Key</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="newAccountPlatform.Key" required minlength="5" maxlength="100"
+            name="Key" #Key="ngModel" />
+          <div *ngIf="accountPlatForm.submitted && Key.invalid" class="invalid-feedback">
+            <div *ngIf="Key.errors.required" class="alert alert-danger">Key is required</div>
+            <div *ngIf="Key.errors.minlength" class="alert alert-danger">Key must be at least 5 characters</div>
+          </div>
+        </div>
+        <div class="checkbox">
+          <mat-checkbox [(ngModel)]="newAccountPlatform.IsActive" ngModel name="IsActive" (change)="isIndeterminate = false" [indeterminate]="isIndeterminate"
+            [disabled]="isDisabled" [labelPosition]="labelPosition">IsActive
+          </mat-checkbox>
+        </div>
+        <div class="form-group">
+          <button mat-flat-button color="primary" type="submit">Save</button>
+          <button mat-flat-button color="warn" type="button" (click)="cancelNewAccountPlatform()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit AccountPlatform -->
+<div *ngIf="editAcountPlatformForm" class="col-md-12">
+  <h3 style="text-align: center">Edit(Accountplatform)</h3>
+  <div class="card">
+    <div class="card-body">
+      <form #editedAccountPlatForm="ngForm" (ngSubmit)="editedAccountPlatForm.form.valid && onSubmitUpdate(editedAccountPlatForm)"
+        id="form">
+        <div [style.visibility]="'hidden'">
+          <label class="col-md-4">ID</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="editedAccountPlatform.ID" name="ID" />
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Platform Description</label>
+          <select ngModel class="form-control" name="PlatformID" [(ngModel)]="editedAccountPlatform.PlatformID" #PlatformID="ngModel"
+            required>
+            <option [ngValue]="platform.ID" *ngFor="let platform of platforms">{{platform.Description}}</option>
+          </select>
+          <div *ngIf="editedAccountPlatForm.submitted && PlatformID.invalid" class="invalid-feedback">
+            <div *ngIf="PlatformID.errors.required" class="alert alert-danger">PlatformID is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Plugin Title</label>
+          <select ngModel class="form-control" name="PluginID" [(ngModel)]="editedAccountPlatform.PluginID" required #PluginID="ngModel">
+            <option [ngValue]="plugin.ID" *ngFor="let plugin of plugins">{{plugin.Title}}</option>
+          </select>
+          <div *ngIf="editedAccountPlatForm.submitted && PluginID.invalid" class="invalid-feedback">
+            <div *ngIf="PluginID.errors.required" class="alert alert-danger">PluginID is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Type</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="editedAccountPlatform.Type" required minlength="5" maxlength="100"
+            name="Type" #Type="ngModel" />
+          <div *ngIf="editedAccountPlatForm.submitted && Type.invalid" class="invalid-feedback">
+            <div *ngIf="Type.errors.required" class="alert alert-danger">Type is required</div>
+            <div *ngIf="Type.errors.minlength" class="alert alert-danger">Type must be at least 5 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Key</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="editedAccountPlatform.Key" required minlength="5" maxlength="100"
+            name="Key" #Key="ngModel" />
+          <div *ngIf="editedAccountPlatForm.submitted && Key.invalid" class="invalid-feedback">
+            <div *ngIf="Key.errors.required" class="alert alert-danger">Key is required</div>
+            <div *ngIf="Key.errors.minlength" class="alert alert-danger">Key must be at least 5 characters</div>
+          </div>
+        </div>
+        <div class="checkbox">
+          <div class="checkbox">
+            <mat-checkbox [(ngModel)]="editedAccountPlatform.IsActive" ngModel name="IsActive" (change)="isIndeterminate = false" [indeterminate]="isIndeterminate"
+              [disabled]="isDisabled" [labelPosition]="labelPosition">IsActive
+            </mat-checkbox>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button mat-flat-button color="primary" type="submit">Update</button>
+          <button mat-flat-button color="warn" type="button" (click)="cancelEdits()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- List of PlatformSettings-->
+<div *ngIf="platformSettingList" class="col-md-12">
+  <h3 style="text-align: center">Platform Settings</h3>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Key</th>
+        <th class="text-center">Value</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let platformset of platformSettings">
+        <td>{{platformset.ID}}</td>
+        <td>{{platformset.Key}}</td>
+        <td>{{platformset.Value}}</td>
+        <td>
+          <button mat-flat-button color="accent" (click)="showEditPlatformsettingsForm(platformset)">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+        <td>
+          <button mat-flat-button color="warn" (click)="removePlatformsettings(platformset)">
+            <i class="fa fa-minus"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="showAddPlatformsettingsForm()">
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+<!-- Create PlatformSettings -->
+
+<div *ngIf="createPlatformSettings" class="col-md-12">
+  <h3 style="text-align:center">Add(Platformsettings)</h3>
+  <div class="card">
+    <div class="card-body">
+      <form #platfromsettings="ngForm" (ngSubmit)="platfromsettings.form.valid && onSubmitPlatfromsettings(platfromsettings)" id="form">
+        <div class="form-group">
+          <label class="col-md-4">Key</label>
+          <select ngModel class="form-control" name="Key" [(ngModel)]="newplatfromsettingsform.Key" required #Key="ngModel">
+            <option *ngFor="let defaultplatforsetting of platformsettingsdefault">{{defaultplatforsetting.Key}}</option>
+          </select>
+          <div *ngIf="platfromsettings.submitted && Key.invalid" class="invalid-feedback">
+            <div *ngIf="Key.errors.required" class="alert alert-danger">Key is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Value</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="newplatfromsettingsform.Value" name="Value" required #Value="ngModel"
+            minlength="3" />
+          <div *ngIf="platfromsettings.submitted && Value.invalid" class="invalid-feedback">
+            <div *ngIf="Value.errors.required" class="alert alert-danger">Value is required</div>
+            <div *ngIf="Value.errors.minlength" class="alert alert-danger">Value must be at least 3 characters</div>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" mat-flat-button color="primary">Save</button>
+          <button type="button" mat-flat-button color="accent" (click)="cancelNewPlatformSettings()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit PlatformSettings -->
+
+<div *ngIf="editPlatformSettings" class="col-md-12">
+  <h3 style="text-align:center">Edit(Platformsettings)</h3>
+  <div class="card">
+    <div class="card-body">
+      <form #editedPlatformSettingsForm="ngForm" (ngSubmit)="editedPlatformSettingsForm.form.valid && onSubmitUpdatePlatfromsettings(editedPlatformSettingsForm)"
+        id="form">
+        <div class="form-group" style="display:none">
+          <input ngModel class="form-control" [(ngModel)]="editedPlatformSettings.ID" name="ID" />
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Key</label>
+          <select ngModel class="form-control" name="Key" [(ngModel)]="editedPlatformSettings.Key" required #Key="ngModel">
+            <option *ngFor="let defaultplatforsetting of platformsettingsdefault">{{defaultplatforsetting.Key}}</option>
+          </select>
+          <div *ngIf="editedPlatformSettingsForm.submitted && Key.invalid" class="invalid-feedback">
+            <div *ngIf="Key.errors.required" class="alert alert-danger">Key is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Value</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="editedPlatformSettings.Value" name="Value" required #Value="ngModel"
+            minlength="3" />
+          <div *ngIf="editedPlatformSettingsForm.submitted && Value.invalid" class="invalid-feedback">
+            <div *ngIf="Value.errors.required" class="alert alert-danger">Value is required</div>
+            <div *ngIf="Value.errors.minlength" class="alert alert-danger">Value must be at least 3 characters</div>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" mat-flat-button color="primary">Save</button>
+          <button type="button" mat-flat-button color="accent" (click)="cancelNewPlatformSettings()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- List of IntegrationFilters-->
+
+<div *ngIf="IntegrationFilterList" class="col-md-12">
+  <h3 style="text-align: center">Integration Filters</h3>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Key</th>
+        <th class="text-center">Value</th>
+        <th class="text-center">FilterType</th>
+        <th class="text-center">FilterCondition</th>
+        <th class="text-center">AccountPlatformID</th>
+        <th class="text-center">Result</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let integrationfilter of integrationFilters">
+        <td>{{integrationfilter.ID}}</td>
+        <td>{{integrationfilter.key}}</td>
+        <td>{{integrationfilter.Value}}</td>
+        <td>{{integrationfilter.FilterType}}</td>
+        <td>{{integrationfilter.FilterCondition}}</td>
+        <td>{{integrationfilter.AccountPlatformID}}</td>
+        <td>{{integrationfilter.Result}}</td>
+        <td>
+          <button mat-flat-button color="accent" (click)="showEditIntegrationFilters(integrationfilter)">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+        <td>
+          <button mat-flat-button color="warn" (click)="removeIntegrationFilters(integrationfilter)">
+            <i class="fa fa-minus"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="showAddIntegrationFiltersForm()">
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+<!-- Create IntegrationFilters -->
+<div *ngIf="createIntegrationFilters" class="col-md-12">
+  <h4 style="text-align:center;">Add(Integrationfilters)</h4>
+  <div class="card">
+    <div class="card-body">
+      <form #integrationFilters="ngForm" (ngSubmit)="integrationFilters.form.valid &&  onSubmitIntegrationFilters(integrationFilters)"
+        id="form">
+        <div class="form-group">
+          <label class="col-md-4">Key</label>
+          <select ngModel class="form-control" name="key" [(ngModel)]="newIntegrationFiltersform.key" required #key="ngModel">
+            <option *ngFor="let integrationFilter of integrationFiltersdefault">{{integrationFilter.Value}}</option>
+          </select>
+          <div *ngIf="integrationFilters.submitted && key.invalid" class="invalid-feedback">
+            <div *ngIf="key.errors.required" class="alert alert-danger">Key is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Value</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="newIntegrationFiltersform.Key" name="Value" required #Value="ngModel"
+          />
+          <div *ngIf="integrationFilters.submitted && Value.invalid" class="invalid-feedback">
+            <div *ngIf="Value.errors.required" class="alert alert-danger">Value is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">FilterCondition</label>
+          <select ngModel class="form-control" name="FilterCondition" [(ngModel)]="newIntegrationFiltersform.FilterCondition" required
+            #FilterCondition="ngModel">
+            <option *ngFor="let filtercondition of filterConditions">{{filtercondition.Value}}</option>
+          </select>
+          <div *ngIf="integrationFilters.submitted && FilterCondition.invalid" class="invalid-feedback">
+            <div *ngIf="FilterCondition.errors.required" class="alert alert-danger">FilterCondition is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">FilterType</label>
+          <select ngModel class="form-control" name="FilterType" [(ngModel)]="newIntegrationFiltersform.FilterType" required #FilterType="ngModel">
+            <option *ngFor="let filtertype of filterTypes">{{filtertype.Value}}</option>
+          </select>
+          <div *ngIf="integrationFilters.submitted && FilterType.invalid" class="invalid-feedback">
+            <div *ngIf="FilterType.errors.required" class="alert alert-danger">FilterType is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Result</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="newIntegrationFiltersform.Result" name="Result" required #Result="ngModel"
+          />
+          <div *ngIf="integrationFilters.submitted && Result.invalid" class="invalid-feedback">
+            <div *ngIf="Result.errors.required" class="alert alert-danger">Result is required</div>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" mat-flat-button color="primary">Save</button>
+          <button type="button" mat-flat-button color="accent" (click)="cancelIntegrationFilters()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit IntegrationFilters -->
+<div *ngIf="editIntegrationFilters" class="md-col-12">
+  <h3 style="text-align: center">Edit (IntegrationFilters)</h3>
+  <div class="card">
+    <div class="card-body">
+      <form #editIntegrationFilters="ngForm" (ngSubmit)="editIntegrationFilters.form.valid && onSubmitUpdateIntegrationFilters(editIntegrationFilters)"
+        id="form">
+        <div class="form-group" style="display:none">
+            <input ngModel class="form-control" [(ngModel)]="editedIntegrationFilters.ID" name="ID" />
+        </div>
+        <div class="form-group" style="display:none">
+            <input ngModel class="form-control" [(ngModel)]="editedIntegrationFilters.AccountPlatformID" name="AccountPlatformID" />
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Key</label>
+          <select ngModel class="form-control" name="key" [(ngModel)]="editedIntegrationFilters.key" required #key="ngModel">
+            <option *ngFor="let defaultIntegrationFilters of integrationFiltersdefault">{{defaultIntegrationFilters.Value}}</option>
+          </select>
+          <div *ngIf="editIntegrationFilters.submitted && key.invalid" class="invalid-feedback">
+            <div *ngIf="key.errors.required" class="alert alert-danger">Key is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Value</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="editedIntegrationFilters.Value" name="Value" required #Value="ngModel"
+          />
+          <div *ngIf="editIntegrationFilters.submitted && Value.invalid" class="invalid-feedback">
+            <div *ngIf="Value.errors.required" class="alert alert-danger">Value is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">FilterType</label>
+          <select ngModel class="form-control" name="FilterType" [(ngModel)]="editedIntegrationFilters.FilterType" required #FilterType="ngModel">
+            <option *ngFor="let defaultFilterTypes of filterTypes">{{defaultFilterTypes.Value}}</option>
+          </select>
+          <div *ngIf="editIntegrationFilters.submitted && FilterType.invalid" class="invalid-feedback">
+            <div *ngIf="FilterType.errors.required" class="alert alert-danger">FilterType is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4">Filter Condition</label>
+            <select ngModel class="form-control" name="FilterCondition" [(ngModel)]="editedIntegrationFilters.FilterCondition" required
+              #FilterCondition="ngModel">
+              <option *ngFor="let defaultFilterConditions of filterConditions">{{defaultFilterConditions.Value}}</option>
+            </select>
+            <div *ngIf="editIntegrationFilters.submitted && FilterCondition.invalid" class="invalid-feedback">
+              <div *ngIf="FilterCondition.errors.required" class="alert alert-danger">FilterCondition is required</div>
+            </div>
+          </div>
+        <div class="form-group">
+          <label class="col-md-4">Result</label>
+          <input ngModel type="text" class="form-control" [(ngModel)]="editedIntegrationFilters.Result" name="Result" required #Result="ngModel"
+          />
+          <div *ngIf="editIntegrationFilters.submitted && Result.invalid" class="invalid-feedback">
+            <div *ngIf="Result.errors.required" class="alert alert-danger">Result is required</div>
+          </div>
+        </div>
+        <div class="form-group clo-md-12">
+          <button type="submit" mat-flat-button color="primary">Save</button>
+          <button type="button" mat-flat-button color="accent" (click)="cancelEditIntegrationFilters()">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

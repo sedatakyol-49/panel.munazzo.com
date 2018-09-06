@@ -1,0 +1,57 @@
+<nav id="header">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo" style="color: #ff3801;">
+      <img src="../../assets/img/header.png" alt="">
+    </a>
+    <ul class="right headline hide-on-small-and-down">
+      <li class="link">
+        <a [routerLink]="['/search']">Zoeken</a>
+      </li>
+      <li class="link">
+        <a [routerLink]="['/categorien']">Categorieën</a>
+      </li>
+      <li class="link">
+        <a [routerLink]="['/paketten']">Pakketten</a>
+      </li>
+      <li class="link">
+        <a [routerLink]="['/apps']" class="button-platform">Apps</a>
+      </li>
+      <!-- <li class="link">
+        <a routerLink="/shopping-cart" class="button-platform">Winkelwagen</a>
+      </li> -->
+      <li>
+        <a [routerLink]="['/login']" data-target="login-form" class="waves-effect waves-light btn yellow darken-2 grey-text text-darken-4 modal-trigger"
+          id="start-now-navbar">Aanmelden</a>
+      </li>
+    </ul>
+    <div class="right hide-on-med-and-up">
+      <ul class="right">
+        <li class="tooltipped hide-on-small-and-down" data-position="left" data-delay="50" data-tooltip="Zoeken" data-tooltip-id="e5e50294-a0c6-9424-0f07-f57a035563fa">
+          <a routerLink="/search">
+            <i class="material-icons">search</i>
+          </a>
+        </li>
+        <li class="tooltipped hide-on-small-and-down" data-position="left" data-delay="50" data-tooltip="Categorieën" data-tooltip-id="4c560bd4-4820-2185-9729-8f5d6cae1a82">
+          <a href="/app/catalog">
+            <i class="material-icons">receipt</i>
+          </a>
+        </li>
+        <li class="tooltipped" data-position="left" data-delay="50" data-tooltip="Pakketten" data-tooltip-id="6308122e-713a-cb61-bbc1-07fa138e721d">
+          <a href="/app/platform">
+            <i class="material-icons">business</i>
+          </a>
+        </li>
+        <li class="tooltipped" data-position="left" data-delay="50" data-tooltip="Apps" data-tooltip-id="eac6dc7e-fee6-8963-97f7-d5ec0548e481">
+          <a href="/app/store">
+            <i class="material-icons">view_module</i>
+          </a>
+        </li>
+        <li class="tooltipped" data-position="left" data-delay="50" data-tooltip="Aanmelden" data-tooltip-id="857c7aa6-f968-dca6-ff27-e8b231f66ac3">
+          <a class="modal-trigger" href="#login-form" data-target="login-form">
+            <i class="material-icons">supervisor_account</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
