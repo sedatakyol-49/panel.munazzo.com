@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
   isError(error:string){
     this.isPassCorrect=true;
     this.isPassErrorMes=error;
+    this.warningText=error;
   }
-
 
   public onSubmit(form: NgForm): void {
     this.account.Username = form.value.username;
@@ -92,9 +92,8 @@ export class LoginComponent implements OnInit {
       this.submitted = true;
     }
     else{
-      // this.IsNull=true;
-      // this.warningText="Username or password is incorrect!";
-      // alert("Username or password is incorrect!");
+      this.isPassCorrect=true;
+      this.warningText="Username or password is not null!";
     }
   }
 
