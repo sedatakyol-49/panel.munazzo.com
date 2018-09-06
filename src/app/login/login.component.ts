@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   public warningText;
   public dangerText="Danger";
   public successColor="#8ad919";
-  public warningCOlor="#ffb53e";
+  public warningCOlor="#d9534f";
   public dangerColor="#f9243f";
   public fontColor="#ececec";
 

@@ -9,7 +9,7 @@ export class WidgetGuardService implements CanActivate{
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
-        if("1"==localStorage.getItem("accountID")){
+        if(localStorage.getItem("accountID")!="1"){
             alert("You dont have this permission !");
             return false;
         }else {

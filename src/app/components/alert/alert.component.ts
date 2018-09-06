@@ -12,7 +12,7 @@ declare let $:any;
 })
 
 export class AlertComponent {
-  @Input('color') color:string="#ec045b";
+  @Input('color') color:string="#d9534f";
   @Input('fontColor') font:string="#ececec";
   @Input('text') text:string="Alert";
   public opacity:number=0;
