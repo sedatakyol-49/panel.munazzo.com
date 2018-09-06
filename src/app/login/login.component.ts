@@ -5,6 +5,7 @@ import { LoginService } from "./login.service";
 import { Account } from '../core/data/Acount';
 import { MyGlobal } from '../core/data/global';
 import { Services } from '../core/commonservices/services';
+import { AlertService } from '../components/alert/alert.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -19,25 +20,24 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   message: string;
   loading = false;
-  IsNull:boolean;
-  isPassCorrect:boolean=false;
-  isPassErrorMes:string;
+  IsNull: boolean;
 
   //
-  public successText="Successful";
+  public successText = "Successful";
   public warningText;
-  public dangerText="Danger";
-  public successColor="#8ad919";
-  public warningCOlor="#d9534f";
-  public dangerColor="#f9243f";
-  public fontColor="#ececec";
+  public dangerText = "Danger";
+  public successColor = "#8ad919";
+  public warningCOlor = "#d9534f";
+  public dangerColor = "#f9243f";
+  public fontColor = "#ececec";
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private service: LoginService,
     private commonservice: Services,
     private account: Account,
-    private actvatedRoute: ActivatedRoute
+    private actvatedRoute: ActivatedRoute,
+    private _alertService: AlertService
   ) {
     this.account.ID = 0;
     this.account.PasswordSalt = "";
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.account.UpdatedOn = "0000-00-00 00:00:00";
     this.account.Deleted = false;
     this.account.Active = true;
-    this.IsNull=false;
+    this.IsNull = false;
   }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     this.getFindAccountByUsername();
   }
 
-  getActivatedRoute(){
+  getActivatedRoute() {
     this.actvatedRoute.queryParams.subscribe(params => {
       this.returnUrl = params["returnUrl"] || "dashboard";
     });
@@ -64,20 +64,15 @@ export class LoginComponent implements OnInit {
       this.accounts = c;
     });
   }
-  isError(error:string){
-    this.isPassCorrect=true;
-    this.isPassErrorMes=error;
-    this.warningText=error;
-  }
 
   public onSubmit(form: NgForm): void {
     this.account.Username = form.value.username;
     this.account.Password = form.value.password;
-    if(form.value.username!="" && form.value.username!==null){   
+    if (form.value.username != "" && form.value.username !== null) {
       this.service.login(this.account).subscribe(t => {
         if (t) {
-          const result = this.accounts.filter(s => s.Username==form.value.username);
-          this.account.ID=result[0].ID;
+          const result = this.accounts.filter(s => s.Username == form.value.username);
+          this.account.ID = result[0].ID;
           localStorage.removeItem("accountID");
           localStorage.setItem("accountID", this.account.ID.toString());
           this.loading = true;
@@ -85,15 +80,16 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.message = "Username or password is incorrect!";
+          this._alertService.error(this.message);
         }
-      },error=>{
-        this.isError(error._body);
+      }, error => {
+        this._alertService.error(error._body);
       })
       this.submitted = true;
     }
-    else{
-      this.isPassCorrect=true;
-      this.warningText="Username or password is not null!";
+    else {
+      this.message = "Please, enter all fields";
+      this._alertService.error(this.message);
     }
   }
 

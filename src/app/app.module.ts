@@ -45,6 +45,7 @@ import { MarketplaceComponent } from './legacywidgets/marketplace/marketplace.co
 import { GenerallComponent } from './legacywidgets/munazzo-com/generall-conditions/generall.component';
 import { ConditionsComponent } from './legacywidgets/munazzo-com/dropshipping-conditions/conditions.component';
 import { WidgetGuardService } from './widgets/widgets.guard.service';
+import { AlertService } from './components/alert/alert.service';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { WidgetGuardService } from './widgets/widgets.guard.service';
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-    WidgetGuardService
+    WidgetGuardService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
