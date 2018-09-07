@@ -28,6 +28,7 @@ export class LoginService {
 
    login(account:Account):Observable<boolean>{
     let url:string=this.myAppUrl+"account/login";
+   // let localUrl="http://localhost:51462/account/login";
     var requestOptions=new RequestOptions({headers:this.headers});
     return this._http.post(url,account,requestOptions)
     .map(res => res.json())

@@ -45,6 +45,7 @@ export class Services implements DoCheck {
         //get all accountplatform
         getAllAccount(): Observable<Account[]> {
             let url: string = this.myAppUrl + "account/getall";
+           // let localUrl="http://localhost:51462/account/getall";
             let header=new Headers();
             header.append('Content-Type', 'application/json');
             var requestOptions = new RequestOptions({ headers: header });
