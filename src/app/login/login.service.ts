@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response,RequestOptions,Headers } from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
@@ -12,43 +12,42 @@ import { Account } from '../core/data/Acount';
 })
 export class LoginService {
   myAppUrl: string = "";
-  private loggedIn=false;
+  private loggedIn = false;
 
   constructor(
-    private _http:Http, @Inject('baseUrl')baseUrl:string) {
-    this.myAppUrl=baseUrl;
-   }
-
-   private headers = new Headers(
-     { 
-       'Content-Type': 'application/json' ,
-       'X-MKC-Auth':'test'     
-    }
-    );
-
-   login(account:Account):Observable<boolean>{
-    let url:string=this.myAppUrl+"account/login";
-   // let localUrl="http://localhost:51462/account/login";
-    var requestOptions=new RequestOptions({headers:this.headers});
-    return this._http.post(url,account,requestOptions)
-    .map(res => res.json())
-    .map(res=>{
-      if(res){
-        localStorage.setItem("isLogged",res);
-        this.loggedIn=true;
-      }
-      return res;
-    })
-    .catch(this.errorHandler);
+    private _http: Http, @Inject('baseUrl') baseUrl: string) {
+    this.myAppUrl = baseUrl;
   }
 
-   logOut(){
+  private headers = new Headers(
+    {
+      'Content-Type': 'application/json',
+      'X-MKC-Auth': 'test'
+    }
+  );
+
+  login(account: Account): Observable<boolean> {
+    let url: string = this.myAppUrl + "account/login";
+    var requestOptions = new RequestOptions({ headers: this.headers });
+    return this._http.post(url, account, requestOptions)
+      .map(res => res.json())
+      .map(res => {
+        if (res) {
+          localStorage.setItem("isLogged", "true");
+          this.loggedIn = true;
+        }
+        return res;
+      })
+      .catch(this.errorHandler);
+  }
+
+  logOut() {
     localStorage.removeItem('isLogged');
-    this.loggedIn=false;
+    this.loggedIn = false;
   }
 
   //kullanici login mi!!
-  isLoggedIn(){
+  isLoggedIn() {
     return this.loggedIn;
   }
 
