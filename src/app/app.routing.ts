@@ -17,6 +17,8 @@ import { CategorienComponent } from './legacywidgets/assortiment/categorien/cate
 import { PakettenComponent } from './legacywidgets/assortiment/paketten/paketten.component';
 import { SearchComponent } from './legacywidgets/assortiment/search/search.component';
 import { WidgetGuardService } from './widgets/widgets.guard.service';
+import { LoginGuardService } from './login/login.guard.service';
+import { DashboardGuardService } from './dashboard/dashboard.guard.service';
 
 // Layouts
 export const routes: Routes = [
@@ -69,7 +71,8 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './login/login.module#LoginModule'
+    loadChildren: './login/login.module#LoginModule',
+    canActivate:[LoginGuardService]
   },
   {
     path: 'register',
@@ -85,6 +88,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
+        canActivate:[DashboardGuardService],
         data: {
           title2: "Dashboard"
         }

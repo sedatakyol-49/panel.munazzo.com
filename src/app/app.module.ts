@@ -46,6 +46,8 @@ import { GenerallComponent } from './legacywidgets/munazzo-com/generall-conditio
 import { ConditionsComponent } from './legacywidgets/munazzo-com/dropshipping-conditions/conditions.component';
 import { WidgetGuardService } from './widgets/widgets.guard.service';
 import { AlertService } from './components/alert/alert.service';
+import { LoginGuardService } from './login/login.guard.service';
+import { DashboardGuardService } from './dashboard/dashboard.guard.service';
 
 
 @NgModule({
@@ -100,7 +102,9 @@ import { AlertService } from './components/alert/alert.service';
     useClass: HashLocationStrategy,
   },
     WidgetGuardService,
-    AlertService
+    AlertService,
+    LoginGuardService,
+    DashboardGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,12 @@ export class FullLayoutComponent{
 
   public toggleBarIcon:boolean=true;
   loggedInCustomer=true;
-  constructor(){
+  constructor(private _router:Router){
+  }
+  logOut(){
+    localStorage.removeItem("isLogged");
+    localStorage.removeItem("accountID");
+    this._router.navigate(["legacydashboard"]);
   }
 
   
