@@ -24,24 +24,6 @@ export class LoginService {
       'Content-Type': 'application/json',
       'X-MKC-Auth': 'test'
     }
-<<<<<<< HEAD
-    );
-
-   login(account:Account):Observable<boolean>{
-    let url:string=this.myAppUrl+"account/login";
-   // let localUrl="http://localhost:51462/account/login";
-    var requestOptions=new RequestOptions({headers:this.headers});
-    return this._http.post(url,account,requestOptions)
-    .map(res => res.json())
-    .map(res=>{
-      if(res){
-        localStorage.setItem("isLogged",res);
-        this.loggedIn=true;
-      }
-      return res;
-    })
-    .catch(this.errorHandler);
-=======
   );
 
   login(account: Account): Observable<boolean> {
@@ -57,7 +39,6 @@ export class LoginService {
         return res;
       })
       .catch(this.errorHandler);
->>>>>>> origin/_LogOut
   }
 
   logOut() {
