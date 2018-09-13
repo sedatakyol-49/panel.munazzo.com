@@ -172,6 +172,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _legacywidgets_munazzo_com_dropshipping_conditions_conditions_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./legacywidgets/munazzo-com/dropshipping-conditions/conditions.component */ "./src/app/legacywidgets/munazzo-com/dropshipping-conditions/conditions.component.ts");
 /* harmony import */ var _widgets_widgets_guard_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./widgets/widgets.guard.service */ "./src/app/widgets/widgets.guard.service.ts");
 /* harmony import */ var _components_alert_alert_service__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/alert/alert.service */ "./src/app/components/alert/alert.service.ts");
+/* harmony import */ var _login_login_guard_service__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./login/login.guard.service */ "./src/app/login/login.guard.service.ts");
+/* harmony import */ var _dashboard_dashboard_guard_service__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./dashboard/dashboard.guard.service */ "./src/app/dashboard/dashboard.guard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -185,6 +187,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 // Routing Module
+
+
 
 
 
@@ -264,7 +268,9 @@ var AppModule = /** @class */ (function () {
                     useClass: _angular_common__WEBPACK_IMPORTED_MODULE_2__["HashLocationStrategy"],
                 },
                 _widgets_widgets_guard_service__WEBPACK_IMPORTED_MODULE_27__["WidgetGuardService"],
-                _components_alert_alert_service__WEBPACK_IMPORTED_MODULE_28__["AlertService"]
+                _components_alert_alert_service__WEBPACK_IMPORTED_MODULE_28__["AlertService"],
+                _login_login_guard_service__WEBPACK_IMPORTED_MODULE_29__["LoginGuardService"],
+                _dashboard_dashboard_guard_service__WEBPACK_IMPORTED_MODULE_30__["DashboardGuardService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
@@ -305,12 +311,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _legacywidgets_assortiment_paketten_paketten_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./legacywidgets/assortiment/paketten/paketten.component */ "./src/app/legacywidgets/assortiment/paketten/paketten.component.ts");
 /* harmony import */ var _legacywidgets_assortiment_search_search_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./legacywidgets/assortiment/search/search.component */ "./src/app/legacywidgets/assortiment/search/search.component.ts");
 /* harmony import */ var _widgets_widgets_guard_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./widgets/widgets.guard.service */ "./src/app/widgets/widgets.guard.service.ts");
+/* harmony import */ var _login_login_guard_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./login/login.guard.service */ "./src/app/login/login.guard.service.ts");
+/* harmony import */ var _dashboard_dashboard_guard_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./dashboard/dashboard.guard.service */ "./src/app/dashboard/dashboard.guard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -380,7 +390,8 @@ var routes = [
     },
     {
         path: 'login',
-        loadChildren: './login/login.module#LoginModule'
+        loadChildren: './login/login.module#LoginModule',
+        canActivate: [_login_login_guard_service__WEBPACK_IMPORTED_MODULE_18__["LoginGuardService"]]
     },
     {
         path: 'register',
@@ -396,6 +407,7 @@ var routes = [
             {
                 path: 'dashboard',
                 loadChildren: './dashboard/dashboard.module#DashboardModule',
+                canActivate: [_dashboard_dashboard_guard_service__WEBPACK_IMPORTED_MODULE_19__["DashboardGuardService"]],
                 data: {
                     title2: "Dashboard"
                 }
@@ -521,6 +533,53 @@ var AlertService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/dashboard/dashboard.guard.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/dashboard/dashboard.guard.service.ts ***!
+  \******************************************************/
+/*! exports provided: DashboardGuardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardGuardService", function() { return DashboardGuardService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DashboardGuardService = /** @class */ (function () {
+    function DashboardGuardService(_router) {
+        this._router = _router;
+    }
+    DashboardGuardService.prototype.canActivate = function () {
+        if (localStorage.getItem("isLogged") == "true") {
+            return true;
+        }
+        else {
+            this._router.navigate(["/login"]);
+            return false;
+        }
+    };
+    DashboardGuardService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], DashboardGuardService);
+    return DashboardGuardService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/footer/footer.component.css":
 /*!*********************************************!*\
   !*** ./src/app/footer/footer.component.css ***!
@@ -602,7 +661,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav id=\"header\">\r\n  <div class=\"nav-wrapper\">\r\n    <a href=\"/\" class=\"brand-logo\" style=\"color: #ff3801;\">\r\n      <img src=\"../../assets/img/header.png\" alt=\"\">\r\n    </a>\r\n    <ul class=\"right headline hide-on-small-and-down\">\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/search']\">Zoeken</a>\r\n      </li>\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/categorien']\">Categorieën</a>\r\n      </li>\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/paketten']\">Pakketten</a>\r\n      </li>\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/apps']\" class=\"button-platform\">Apps</a>\r\n      </li>\r\n      <!-- <li class=\"link\">\r\n        <a routerLink=\"/shopping-cart\" class=\"button-platform\">Winkelwagen</a>\r\n      </li> -->\r\n      <li>\r\n        <a [routerLink]=\"['/login']\" data-target=\"login-form\" class=\"waves-effect waves-light btn yellow darken-2 grey-text text-darken-4 modal-trigger\"\r\n          id=\"start-now-navbar\">Aanmelden</a>\r\n      </li>\r\n    </ul>\r\n    <div class=\"right hide-on-med-and-up\">\r\n      <ul class=\"right\">\r\n        <li class=\"tooltipped hide-on-small-and-down\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Zoeken\" data-tooltip-id=\"e5e50294-a0c6-9424-0f07-f57a035563fa\">\r\n          <a routerLink=\"/search\">\r\n            <i class=\"material-icons\">search</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped hide-on-small-and-down\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Categorieën\" data-tooltip-id=\"4c560bd4-4820-2185-9729-8f5d6cae1a82\">\r\n          <a href=\"/app/catalog\">\r\n            <i class=\"material-icons\">receipt</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Pakketten\" data-tooltip-id=\"6308122e-713a-cb61-bbc1-07fa138e721d\">\r\n          <a href=\"/app/platform\">\r\n            <i class=\"material-icons\">business</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Apps\" data-tooltip-id=\"eac6dc7e-fee6-8963-97f7-d5ec0548e481\">\r\n          <a href=\"/app/store\">\r\n            <i class=\"material-icons\">view_module</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Aanmelden\" data-tooltip-id=\"857c7aa6-f968-dca6-ff27-e8b231f66ac3\">\r\n          <a class=\"modal-trigger\" href=\"#login-form\" data-target=\"login-form\">\r\n            <i class=\"material-icons\">supervisor_account</i>\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = "<nav id=\"header\">\r\n  <div class=\"nav-wrapper\">\r\n    <a href=\"/\" class=\"brand-logo\" style=\"color: #ff3801;\">\r\n      <img src=\"../../assets/img/header.png\" alt=\"\">\r\n    </a>\r\n    <ul class=\"right headline hide-on-small-and-down\">\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/search']\">Zoeken</a>\r\n      </li>\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/categorien']\">Categorieën</a>\r\n      </li>\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/paketten']\">Pakketten</a>\r\n      </li>\r\n      <li class=\"link\">\r\n        <a [routerLink]=\"['/apps']\" class=\"button-platform\">Apps</a>\r\n      </li>\r\n      <!-- <li class=\"link\">\r\n        <a routerLink=\"/shopping-cart\" class=\"button-platform\">Winkelwagen</a>\r\n      </li> -->\r\n      <li>\r\n        <a [routerLink]=\"['/login']\" data-target=\"login-form\" class=\"waves-effect waves-light btn yellow darken-2 grey-text text-darken-4 modal-trigger\"\r\n          id=\"start-now-navbar\">Aanmelden</a>\r\n      </li>\r\n    </ul>\r\n    <div class=\"right hide-on-med-and-up\">\r\n      <ul class=\"right\">\r\n        <li class=\"tooltipped hide-on-small-and-down\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Zoeken\"\r\n          data-tooltip-id=\"e5e50294-a0c6-9424-0f07-f57a035563fa\">\r\n          <a routerLink=\"/search\">\r\n            <i class=\"material-icons\">search</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped hide-on-small-and-down\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Categorieën\"\r\n          data-tooltip-id=\"4c560bd4-4820-2185-9729-8f5d6cae1a82\">\r\n          <a href=\"/app/catalog\">\r\n            <i class=\"material-icons\">receipt</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Pakketten\" data-tooltip-id=\"6308122e-713a-cb61-bbc1-07fa138e721d\">\r\n          <a href=\"/app/platform\">\r\n            <i class=\"material-icons\">business</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Apps\" data-tooltip-id=\"eac6dc7e-fee6-8963-97f7-d5ec0548e481\">\r\n          <a href=\"/app/store\">\r\n            <i class=\"material-icons\">view_module</i>\r\n          </a>\r\n        </li>\r\n        <li class=\"tooltipped\" data-position=\"left\" data-delay=\"50\" data-tooltip=\"Aanmelden\" data-tooltip-id=\"857c7aa6-f968-dca6-ff27-e8b231f66ac3\">\r\n          <a class=\"modal-trigger\" href=\"#login-form\" data-target=\"login-form\">\r\n            <i class=\"material-icons\">supervisor_account</i>\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -654,7 +713,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Admin layout -->\r\n<div *ngIf=\"loggedInCustomer\">\r\n  <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\" style=\"background-color:#fff\">\r\n    <div class=\"container-fluid\" >\r\n      <div class=\"navbar-header\" >\r\n        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#sidebar-collapse\" (click)=\"toggle()\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <i class=\"fa {{toggleBarIcon?'fa-bars':'fa-remove'}} text-white custom-nav-toggle\"></i>\r\n        </button>\r\n        <a class=\"navbar-brand\" [routerLink]=\"['/dashboard']\">\r\n          <span>Munazzo Admin Brand</span>\r\n          <!-- <img  src=\"/assets/fonts/Munazzo.png\"  style=\"width:100%;height:20%;padding:5%\"/> -->\r\n        </a>\r\n        <ul class=\"user-menu\" style=\"background-color:firebrick\">\r\n          <li class=\"dropdown pull-right\">\r\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\r\n              User\r\n              <span class=\"caret\"></span>\r\n            </a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n              <li>\r\n                <a href=\"#\">\r\n                  <i class=\"fa fa-fw fa-user\"></i> Profile</a>\r\n              </li>\r\n              <li>\r\n                <a href=\"#\">\r\n                  <i class=\"fa fa-fw fa-cogs\"></i> Settings</a>\r\n              </li>\r\n              <li>\r\n                <a [routerLink]=\"['/legacydashboard']\">\r\n                  <i class=\"fa fa-fw fa-lock\"></i> Logout</a>\r\n              </li>\r\n            </ul>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n    <!-- /.container-fluid -->\r\n  </nav>\r\n  \r\n  <div id=\"sidebar-collapse\" class=\"col-sm-3 col-lg-2 sidebar\">\r\n    <form role=\"search\">\r\n      <div class=\"form-group\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n      </div>\r\n    </form>\r\n    <ul class=\"nav menu\">\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"fa fa-dashboard fa-fw\"></i> Dashboard</a>\r\n      </li>\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/form']\">\r\n          <i class=\"fa fa-list fa-fw\"></i> Form</a>\r\n      </li>\r\n  \r\n      <li class=\"parent \">\r\n        <a data-toggle=\"collapse\" href=\"#sub-item-1\">\r\n          <i class=\"fa fa-fw fa-chevron-circle-down\"></i> Widgets\r\n        </a>\r\n        <ul class=\"children collapse\" id=\"sub-item-1\">\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/accountplatform']\">\r\n              <i class=\"fa fa-angle-double-right\"></i> Go to Account-Paltform\r\n            </a>\r\n          </li>\r\n          <!-- <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/platformsettings']\">\r\n              <i class=\"fa fa-angle-double-right\"></i> Go to Paltform-Settings\r\n            </a>\r\n          </li> -->\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/table']\">\r\n              <i class=\"fa fa-fw fa-table\"></i> Table\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/chart']\">\r\n              <i class=\"fa fa-fw fa-bar-chart\"></i> Charts\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/main']\">\r\n              <i class=\"fa fa-fw fa-cogs\"></i> Main\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </li>\r\n      <li role=\"presentation\" class=\"divider\"></li>\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/login']\">\r\n          <i class=\"fa fa-user fa-fw\"></i> Login</a>\r\n      </li>\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/register']\">\r\n          <i class=\"fa fa-users fa-fw\"></i> Register</a>\r\n      </li>\r\n  \r\n    </ul>\r\n    <div class=\"attribution\">Angular JS 2/4 Dashboard by\r\n      <a href=\"https://github.com/mohdrashid\">@mohdrashid</a>\r\n      <br/> CSS by\r\n      <a href=\"http://www.medialoot.com/item/lumino-admin-bootstrap-template/\">Medialoot</a>\r\n  \r\n    </div>\r\n  </div>\r\n  <!--/.sidebar-->\r\n  <div class=\"col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main\">\r\n    <!-- Main content -->\r\n    <div class=\"row\" style=\"margin-top:5%\">\r\n      <ng2-auto-breadcrumb></ng2-auto-breadcrumb>\r\n    </div>\r\n    <!--/.row-->\r\n  \r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<!-- Admin layout -->\r\n<div *ngIf=\"loggedInCustomer\">\r\n  <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\" style=\"background-color:#fff\">\r\n    <div class=\"container-fluid\" >\r\n      <div class=\"navbar-header\" >\r\n        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#sidebar-collapse\" (click)=\"toggle()\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <i class=\"fa {{toggleBarIcon?'fa-bars':'fa-remove'}} text-white custom-nav-toggle\"></i>\r\n        </button>\r\n        <a class=\"navbar-brand\" [routerLink]=\"['/dashboard']\">\r\n          <span>Munazzo Admin Brand</span>\r\n          <!-- <img  src=\"/assets/fonts/Munazzo.png\"  style=\"width:100%;height:20%;padding:5%\"/> -->\r\n        </a>\r\n        <ul class=\"user-menu\" style=\"background-color:firebrick\">\r\n          <li class=\"dropdown pull-right\">\r\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\r\n              User\r\n              <span class=\"caret\"></span>\r\n            </a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n              <li>\r\n                <a href=\"#\">\r\n                  <i class=\"fa fa-fw fa-user\"></i> Profile</a>\r\n              </li>\r\n              <li>\r\n                <a href=\"#\">\r\n                  <i class=\"fa fa-fw fa-cogs\"></i> Settings</a>\r\n              </li>\r\n              <li>\r\n                <a (click)=\"logOut()\">\r\n                  <i class=\"fa fa-fw fa-lock\"></i> Logout</a>\r\n              </li>\r\n            </ul>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n    <!-- /.container-fluid -->\r\n  </nav>\r\n  \r\n  <div id=\"sidebar-collapse\" class=\"col-sm-3 col-lg-2 sidebar\">\r\n    <form role=\"search\">\r\n      <div class=\"form-group\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\r\n      </div>\r\n    </form>\r\n    <ul class=\"nav menu\">\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"fa fa-dashboard fa-fw\"></i> Dashboard</a>\r\n      </li>\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/form']\">\r\n          <i class=\"fa fa-list fa-fw\"></i> Form</a>\r\n      </li>\r\n  \r\n      <li class=\"parent \">\r\n        <a data-toggle=\"collapse\" href=\"#sub-item-1\">\r\n          <i class=\"fa fa-fw fa-chevron-circle-down\"></i> Widgets\r\n        </a>\r\n        <ul class=\"children collapse\" id=\"sub-item-1\">\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/accountplatform']\">\r\n              <i class=\"fa fa-angle-double-right\"></i> Go to Account-Paltform\r\n            </a>\r\n          </li>\r\n          <!-- <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/platformsettings']\">\r\n              <i class=\"fa fa-angle-double-right\"></i> Go to Paltform-Settings\r\n            </a>\r\n          </li> -->\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/table']\">\r\n              <i class=\"fa fa-fw fa-table\"></i> Table\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/chart']\">\r\n              <i class=\"fa fa-fw fa-bar-chart\"></i> Charts\r\n            </a>\r\n          </li>\r\n          <li>\r\n            <a routerLinkActive=\"active\" [routerLink]=\"['/widget/main']\">\r\n              <i class=\"fa fa-fw fa-cogs\"></i> Main\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </li>\r\n      <li role=\"presentation\" class=\"divider\"></li>\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/login']\">\r\n          <i class=\"fa fa-user fa-fw\"></i> Login</a>\r\n      </li>\r\n      <li>\r\n        <a routerLinkActive=\"active\" [routerLink]=\"['/register']\">\r\n          <i class=\"fa fa-users fa-fw\"></i> Register</a>\r\n      </li>\r\n  \r\n    </ul>\r\n    <div class=\"attribution\">Angular JS 2/4 Dashboard by\r\n      <a href=\"https://github.com/mohdrashid\">@mohdrashid</a>\r\n      <br/> CSS by\r\n      <a href=\"http://www.medialoot.com/item/lumino-admin-bootstrap-template/\">Medialoot</a>\r\n  \r\n    </div>\r\n  </div>\r\n  <!--/.sidebar-->\r\n  <div class=\"col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main\">\r\n    <!-- Main content -->\r\n    <div class=\"row\" style=\"margin-top:5%\">\r\n      <ng2-auto-breadcrumb></ng2-auto-breadcrumb>\r\n    </div>\r\n    <!--/.row-->\r\n  \r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -680,6 +739,7 @@ module.exports = "/*!\r\n * Bootstrap v3.2.0 (http://getbootstrap.com)\r\n * Cop
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FullLayoutComponent", function() { return FullLayoutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -690,18 +750,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FullLayoutComponent = /** @class */ (function () {
-    function FullLayoutComponent() {
+    function FullLayoutComponent(_router) {
+        this._router = _router;
         this.toggleBarIcon = true;
         this.loggedInCustomer = true;
     }
+    FullLayoutComponent.prototype.logOut = function () {
+        localStorage.removeItem("isLogged");
+        localStorage.removeItem("accountID");
+        this._router.navigate(["legacydashboard"]);
+    };
     FullLayoutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dashboard',
             template: __webpack_require__(/*! ./full-layout.component.html */ "./src/app/layout/full-layout.component.html"),
             styles: [__webpack_require__(/*! ./full-layout.component.scss */ "./src/app/layout/full-layout.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], FullLayoutComponent);
     return FullLayoutComponent;
 }());
@@ -1586,6 +1653,53 @@ var OverOnsComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], OverOnsComponent);
     return OverOnsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.guard.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/login/login.guard.service.ts ***!
+  \**********************************************/
+/*! exports provided: LoginGuardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginGuardService", function() { return LoginGuardService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LoginGuardService = /** @class */ (function () {
+    function LoginGuardService(_router) {
+        this._router = _router;
+    }
+    LoginGuardService.prototype.canActivate = function (route, state) {
+        if (localStorage.getItem("isLogged") == "true") {
+            this._router.navigate(["/dashboard"]);
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    LoginGuardService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], LoginGuardService);
+    return LoginGuardService;
 }());
 
 

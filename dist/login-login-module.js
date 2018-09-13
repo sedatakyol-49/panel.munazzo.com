@@ -604,13 +604,12 @@ var LoginService = /** @class */ (function () {
     LoginService.prototype.login = function (account) {
         var _this = this;
         var url = this.myAppUrl + "account/login";
-        // let localUrl="http://localhost:51462/account/login";
         var requestOptions = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: this.headers });
         return this._http.post(url, account, requestOptions)
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (res) {
-                localStorage.setItem("isLogged", res);
+                localStorage.setItem("isLogged", "true");
                 _this.loggedIn = true;
             }
             return res;
